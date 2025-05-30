@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>고등학생 책 추천 웹사이트</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>📚 고등학생 책 추천 웹사이트</h1>
+    <nav>
+      <ul>
+        <li><a href="#" onclick="showMain()">학년별 추천</a></li>
+        <li><a href="#" onclick="showRank()">랭킹/후기</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container" id="mainPage">
+    <h2>학년 선택</h2>
+    <div class="button-group">
+      <button onclick="selectGrade(1)">1학년</button>
+      <button onclick="selectGrade(2)">2학년</button>
+      <button onclick="selectGrade(3)">3학년</button>
+    </div>
+  </main>
+
+  <section class="container hidden" id="subjectPage">
+    <h2 id="subjectTitle"></h2>
+    <div class="button-group" id="subjectButtons"></div>
+    <div id="bookList"></div>
+    <button onclick="showMain()">← 메인으로</button>
+  </section>
+
+  <section class="container hidden" id="rankPage">
+    <h2>⭐ 인기 도서 랭킹</h2>
+    <div id="rankingTop"></div>
+    <button onclick="toggleMoreRanks()">더 보기</button>
+    <div id="rankingMore" class="hidden"></div>
+
+    <h2>✍️ 사용자 후기</h2>
+    <div id="reviewDisplay"></div>
+    <button onclick="toggleReviewForm()">후기 작성하기</button>
+
+    <form id="reviewForm" class="hidden" onsubmit="event.preventDefault(); submitReview();">
+      <label>책 선택:
+        <select id="reviewSelect">
+          <option value="">직접 입력</option>
+        </select>
+      </label>
+      <input type="text" id="reviewTitle" placeholder="책 제목 (직접 입력 시)" />
+      <textarea id="reviewText" placeholder="후기 작성"></textarea>
+      <label>별점:
+        <select id="reviewRating">
+          <option>1</option><option>2</option><option>3</option><option>4</option><option selected>5</option>
+        </select>
+      </label>
+      <button type="submit">저장</button>
+    </form>
+  </section>
+</body>
+</html>
